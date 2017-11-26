@@ -55,9 +55,6 @@
     <ClCompile Include="UI.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="UILabel.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
