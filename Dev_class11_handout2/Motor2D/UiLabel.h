@@ -5,23 +5,21 @@
 #include "SDL/include/SDL.h"
 #include "p2Defs.h"
 #include "p2Point.h"
+#include "j1Fonts.h"
 
 class UiLabel : public UI
 {
 public:
 
-	UiLabel();
+	UiLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font);
 
 	void Update(float dt) { };
-	void Draw() { };
-
-
-
-
-
+	void Draw();
 
 public:
-	SDL_Rect position;
+	char* text = nullptr;
+	SDL_Color color;
+	_TTF_Font* font;
 };
 
 

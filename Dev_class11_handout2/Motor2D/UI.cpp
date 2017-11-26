@@ -3,13 +3,14 @@
 #include "j1App.h"
 #include "j1Gui.h"
 
-UI::UI(int x, int y): screen_pos(x,y)
+UI::UI(int x, int y)
 {
-
+	rectUi.x = x;
+	rectUi.y = y;
 }
 
 void UI::Draw(float dt)
 {
-	App->render->Blit(App->gui->GetAtlas(), screen_pos.x, screen_pos.y, &rectUi);
+	App->render->Blit(App->gui->GetAtlas(), 0, 0, &rectUi);
 
 }
