@@ -4,6 +4,8 @@
 #include "j1Module.h"
 #include "Ui.h"
 #include "p2List.h"
+#include "UiLabel.h"
+#include "UiImage.h"
 #define CURSOR_WIDTH 2
 
 // TODO 1: Create your structure of classes
@@ -35,14 +37,16 @@ public:
 
 	// TODO 2: Create the factory methods
 	// Gui creation functions
-
+	bool Update(float);
+	UiImage* CreateImage(iPoint,SDL_Rect);
+	UiLabel* CreateLabel(SDL_Rect);
 	const SDL_Texture* GetAtlas() const;
 
 private:
 
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
-	p2List<UI> UiElement;
+	p2List<UI*> UiElement;
 };
 
 #endif // __j1GUI_H__

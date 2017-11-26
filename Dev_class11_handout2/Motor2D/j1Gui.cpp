@@ -32,6 +32,7 @@ bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
+
 	return true;
 }
 
@@ -40,7 +41,21 @@ bool j1Gui::PreUpdate()
 {
 	return true;
 }
+bool j1Gui::Update(float dt)
+{
 
+	p2List_item<UI*> *Ui_item = UiElement.start;
+
+	while (Ui_item != nullptr)
+	{
+		Ui_item->data->Draw(dt);
+		Ui_item = Ui_item->next;
+	}
+
+
+	return true;
+
+}
 // Called after all Updates
 bool j1Gui::PostUpdate()
 {
@@ -61,5 +76,11 @@ const SDL_Texture* j1Gui::GetAtlas() const
 	return atlas;
 }
 
-// class Gui ---------------------------------------------------
+UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect)
+{
+	UiImage* newImage = new UiImage(position.x,position.y, rect);
+	UiElement.add((UI*)newImage);
+	return newImage;
+}
 
+// class Gui ---------------------------------------------------

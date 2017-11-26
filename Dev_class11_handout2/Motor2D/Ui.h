@@ -5,15 +5,13 @@
 #include "p2Defs.h"
 #include "p2Point.h"
 
-
-
-
 class UI
 {
-	UI() { };
+public:
+	UI(int,int);
 	virtual void Update(float) { };
-	virtual void Draw() { };
-
+	virtual void Draw(float);
+	virtual ~UI(){ };
 
 
 
@@ -22,8 +20,6 @@ public:
 	SDL_Rect rectUi;
 
 };
-
-
 
 
 
