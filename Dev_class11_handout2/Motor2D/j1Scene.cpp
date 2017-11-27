@@ -48,7 +48,9 @@ bool j1Scene::Start()
 	uint width, height;
 	App->win->GetWindowSize(width, height);
 	uint scale = App->win->GetScale();
-	App->gui->CreateImage({ ((int)(width*scale) / 2) - (300 / 2), 50 * (int)scale }, { 485, 829, 328, 103 });
+	//App->gui->CreateImage({ ((int)(width*scale) / 2) - (300 / 2), 50 * (int)scale }, { 485, 829, 328, 103 });
+	_TTF_Font* font = App->font->Load("fonts/open_sans/OpenSans-Bold.ttf", 20);
+	App->gui->CreateLabel(((width*scale) / 2) - (300 / 2), 50 * scale, "Hello world", {100,100,100,100},font, { 0, 0, 328, 103 });
 
 	return true;
 }

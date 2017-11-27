@@ -8,9 +8,3 @@ UiImage::UiImage(int x, int y, SDL_Rect rect): UI(x,y)
 	this->rectUi = rect;
 }
 
-void UiImage::Draw(float dt)
-{
-
-	App->render->Blit(App->gui->GetAtlas(), screen_pos.x, screen_pos.y, &rectUi);
-
-}

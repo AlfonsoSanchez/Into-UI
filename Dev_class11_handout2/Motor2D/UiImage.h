@@ -12,7 +12,6 @@ class UiImage : public UI
 public:
 
 	UiImage(int,int,SDL_Rect);
-	void Draw(float);
 
 };
 

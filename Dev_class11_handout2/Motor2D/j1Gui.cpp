@@ -83,4 +83,11 @@ UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect)
 	return newImage;
 }
 
+UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font, SDL_Rect rect)
+{
+	UiLabel* newLabel = new UiLabel(x,y,text,color,font,rect);
+	UiElement.add((UI*)newLabel);
+	return newLabel;
+}
+
 // class Gui ---------------------------------------------------
