@@ -49,8 +49,8 @@ bool j1Scene::Start()
 	App->win->GetWindowSize(width, height);
 	uint scale = App->win->GetScale();
 	App->gui->CreateImage({ ((int)(width*scale) / 2) - (300 / 2), 50 * (int)scale }, { 485, 829, 328, 103 },App->gui->GetAtlas());
-	_TTF_Font* font = App->font->Load("fonts/open_sans/OpenSans-Bold.ttf", 12);
-	App->gui->CreateLabel(((width*scale) / 2) - (300 / 2), 50 * scale, "Hello world", {100,100,100,100},font, { 0, 0, 328, 103 });
+	_TTF_Font* font = App->font->Load("fonts/open_sans/OpenSans-Bold.ttf", 20);
+	App->gui->CreateLabel(50,200, "Hello world", {100,100,100,100},font);
 	
 	return true;
 }
@@ -109,7 +109,7 @@ bool j1Scene::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= floor(200.0f * dt);
 
-	App->map->Draw();
+	//App->map->Draw();
 
 	int x, y;
 	App->input->GetMousePosition(x, y);

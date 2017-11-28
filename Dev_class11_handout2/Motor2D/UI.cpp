@@ -9,6 +9,8 @@ UI::UI(int x, int y, const SDL_Texture* texture)
 	screen_pos.x = x;
 	screen_pos.y = y;
 	this->texture = texture;
+	App->tex->GetSize(texture, width, height);
+	rectUi = {0,0,(int)width,(int)height};
 }
 
 void UI::Draw(float dt)

@@ -4,6 +4,7 @@
 #include "SDL/include/SDL.h"
 #include "p2Defs.h"
 #include "p2Point.h"
+#include "j1Textures.h"
 
 class UI
 {
@@ -16,6 +17,8 @@ public:
 
 
 public:
+	uint width;
+	uint height;
 	iPoint screen_pos;
 	SDL_Rect rectUi;
 	const SDL_Texture *texture= nullptr;

@@ -11,16 +11,11 @@ class UiLabel : public UI
 {
 public:
 
-	UiLabel(int x, int y, SDL_Rect rect, const SDL_Texture *texture);
+	UiLabel(int x, int y, const SDL_Texture *texture);
 
-	void Update(float dt) { };
-	void Draw(float dt);
 
 public:
-	SDL_Rect position;
-	char* text = nullptr;
-	SDL_Color color;
-	_TTF_Font* font;
+	
 };
 
 #endif

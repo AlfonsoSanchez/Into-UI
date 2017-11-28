@@ -39,7 +39,7 @@ public:
 	// Gui creation functions
 	bool Update(float);
 	UiImage* CreateImage(iPoint,SDL_Rect, const SDL_Texture*);
-	UiLabel* CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font, SDL_Rect rect);
+	UiLabel* CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font);
 	const SDL_Texture* GetAtlas() const;
 
 private:

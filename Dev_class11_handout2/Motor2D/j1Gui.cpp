@@ -83,12 +83,12 @@ UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect, const SDL_Texture* t
 	return newImage;
 }
 
-UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font, SDL_Rect rect)
+UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font)
 {
 	const SDL_Texture* tex = App->font->Print(text,color,font);
 
 	
-	UiLabel* newLabel = new UiLabel(x,y,rect,tex);
+	UiLabel* newLabel = new UiLabel(x,y,tex);
 	UiElement.add((UI*)newLabel);
 	
 	return newLabel;
