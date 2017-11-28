@@ -76,17 +76,21 @@ const SDL_Texture* j1Gui::GetAtlas() const
 	return atlas;
 }
 
-UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect)
+UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect, const SDL_Texture* texture)
 {
-	UiImage* newImage = new UiImage(position.x,position.y, rect);
+	UiImage* newImage = new UiImage(position.x,position.y, rect,texture);
 	UiElement.add((UI*)newImage);
 	return newImage;
 }
 
 UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font, SDL_Rect rect)
 {
-	UiLabel* newLabel = new UiLabel(x,y,text,color,font,rect);
+	const SDL_Texture* tex = App->font->Print(text,color,font);
+
+	
+	UiLabel* newLabel = new UiLabel(x,y,rect,tex);
 	UiElement.add((UI*)newLabel);
+	
 	return newLabel;
 }
 
