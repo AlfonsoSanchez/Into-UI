@@ -45,13 +45,62 @@ bool j1Scene::Start()
 	debug_tex = App->tex->Load("maps/path2.png");
 
 	// TODO 3: Create the banner (rect {485, 829, 328, 103}) and the text "Hello World"
-	uint width, height;
+	/*uint width, height;
 	App->win->GetWindowSize(width, height);
 	uint scale = App->win->GetScale();
 	App->gui->CreateImage({ ((int)(width*scale) / 2) - (300 / 2), 50 * (int)scale }, { 485, 829, 328, 103 },App->gui->GetAtlas());
 	_TTF_Font* font = App->font->Load("fonts/open_sans/OpenSans-Bold.ttf", 20);
-	App->gui->CreateLabel(50,200, "Hello world", {100,100,100,100},font);
+	App->gui->CreateLabel(50,200, "Hello world", {100,100,100,100},font);*/
 	
+	_TTF_Font* font = App->font->Load("ingame/fonts/ARIALN.ttf", 12);
+	
+	const SDL_Texture *tex = App->tex->Load("ingame/reference.jpg");
+	App->gui->CreateImage({ 0,0 }, { 0,0,1024,768 },tex);
+	
+	const SDL_Texture *tex2 = App->tex->Load("ingame/UI-DialogBox-Button-Up.png");
+	//Manage Acount
+	App->gui->CreateImage({ 19,577 }, { 0,0,130,35 }, tex2);
+	App->gui->CreateLabel(29, 581, "Manage Acount", { 226,186,31,255 }, font);
+	//Community site
+	App->gui->CreateImage({ 19,616 }, { 0,0,130,35 }, tex2);
+	App->gui->CreateLabel(29, 620, "Community Site", { 226,186,31,255 }, font);
+	//Login
+	App->gui->CreateImage({ 445,525 }, { 0,0,150,39 }, tex2);
+	App->gui->CreateLabel(503, 530, "Login", { 226,186,31,255 }, font);
+	//Cinematics
+	App->gui->CreateImage({ 878,516 }, { 0,0,134,35 }, tex2);
+	App->gui->CreateLabel(888, 521, "Cinematics", { 226,186,31,255 }, font);
+	//Credits
+	App->gui->CreateImage({ 878,552 }, { 0,0,134,35 }, tex2);
+	App->gui->CreateLabel(888, 557, "Credits", { 226,186,31,255 }, font);
+	//Term of use
+	App->gui->CreateImage({ 878,588 }, { 0,0,134,35 }, tex2);
+	App->gui->CreateLabel(888, 593, "Terms of Use", { 226,186,31,255 }, font);
+	//Quit
+	App->gui->CreateImage({ 878,707 }, { 0,0,134,35 }, tex2);
+	App->gui->CreateLabel(888, 711, "Quit", { 226,186,31,255 }, font);
+	//LOGO BIG
+	const SDL_Texture *tex3 = App->tex->Load("ingame/Glues-Logo2.png");
+	App->gui->CreateImage({ 0,10 }, { 0,0,350,139}, tex3);
+	//BlizzardLogo
+	const SDL_Texture *tex4 = App->tex->Load("ingame/Glues-BlizzardLogo.png");
+	App->gui->CreateImage({ 460,640}, { 0,0,128,128 }, tex4);
+	//xperience in game
+	const SDL_Texture *tex5 = App->tex->Load("ingame/Glues-ESRBRating.png");
+	App->gui->CreateImage({ 20,595 }, { 0,0,128,128 }, tex5);
+	//input
+	const SDL_Texture *tex6 = App->tex->Load("ingame/UI-DialogBox-Button-Disabled.png");
+	//name
+	App->gui->CreateImage({ 445,389 }, { 0,0,153,38 }, tex6);
+	App->gui->CreateLabel(463, 370, "Account Name", { 226,186,31,255 }, font);
+	//password
+	App->gui->CreateImage({ 445,463 }, { 0,0,153,38 }, tex6);
+	App->gui->CreateLabel(463, 444, "Account Password", { 226,186,31,255 }, font);
+	//Remember Account Name
+	App->gui->CreateLabel(42,655, "Remember Account Name", { 226,186,31,255 }, font);
+	//Version 2.0.12(6546)(Release)
+	App->gui->CreateLabel(2, 732, "Version 2.0.12(6546)(Release)", { 226,186,31,255}, font);
+
 	return true;
 }
 
