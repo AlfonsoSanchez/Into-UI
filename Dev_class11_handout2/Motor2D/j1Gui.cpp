@@ -66,6 +66,8 @@ bool j1Gui::PostUpdate()
 bool j1Gui::CleanUp()
 {
 	LOG("Freeing GUI");
+	
+	UiElement.clear();
 
 	return true;
 }
