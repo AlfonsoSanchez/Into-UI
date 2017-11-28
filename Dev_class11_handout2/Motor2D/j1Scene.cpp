@@ -53,8 +53,9 @@ bool j1Scene::Start()
 	App->gui->CreateLabel(50,200, "Hello world", {100,100,100,100},font);*/
 	
 	_TTF_Font* font = App->font->Load("ingame/fonts/ARIALN.ttf", 12);
-	
-	const SDL_Texture *tex = App->tex->Load("ingame/reference.jpg");
+	//login_background2.jpg
+	//ingame/reference.jpg
+	const SDL_Texture *tex = App->tex->Load("ingame/login_background2.jpg");
 	App->gui->CreateImage({ 0,0 }, { 0,0,1024,768 },tex);
 	
 	const SDL_Texture *tex2 = App->tex->Load("ingame/UI-DialogBox-Button-Up.png");
@@ -80,7 +81,7 @@ bool j1Scene::Start()
 	App->gui->CreateImage({ 878,707 }, { 0,0,134,35 }, tex2);
 	App->gui->CreateLabel(888, 711, "Quit", { 226,186,31,255 }, font);
 	//LOGO BIG
-	const SDL_Texture *tex3 = App->tex->Load("ingame/Glues-Logo2.png");
+	const SDL_Texture *tex3 = App->tex->Load("ingame/Glues-WoW-Logo.png");
 	App->gui->CreateImage({ 0,10 }, { 0,0,350,139}, tex3);
 	//BlizzardLogo
 	const SDL_Texture *tex4 = App->tex->Load("ingame/Glues-BlizzardLogo.png");
@@ -97,10 +98,15 @@ bool j1Scene::Start()
 	App->gui->CreateImage({ 445,463 }, { 0,0,153,38 }, tex6);
 	App->gui->CreateLabel(463, 444, "Account Password", { 226,186,31,255 }, font);
 	//Remember Account Name
+	const SDL_Texture *tex7 = App->tex->Load("ingame/Glues-CheckBox-Background.png"); 
 	App->gui->CreateLabel(42,655, "Remember Account Name", { 226,186,31,255 }, font);
+	App->gui->CreateImage({ 22, 655 }, {0,0,16,16}, tex7);
 	//Version 2.0.12(6546)(Release)
 	App->gui->CreateLabel(2, 732, "Version 2.0.12(6546)(Release)", { 226,186,31,255}, font);
-
+	//All righst reserved
+	App->gui->CreateLabel(350, 750, "Copyright 2004-2007 Blizzard Entertainment. All Rights Reserved", { 226,186,31,255 }, font);
+	//WoWps.org TBC
+	App->gui->CreateLabel(888, 613, "WoWps.org TBC", { 102, 102, 102,255 }, font);
 	return true;
 }
 
