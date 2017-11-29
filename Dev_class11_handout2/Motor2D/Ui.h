@@ -9,7 +9,7 @@
 class UI
 {
 public:
-	UI(int,int, const SDL_Texture*);
+	UI(int,int, const SDL_Texture*,uint);
 	virtual void Update(float) { };
 	virtual void Draw(float);
 	virtual ~UI(){ };
@@ -17,6 +17,7 @@ public:
 
 
 public:
+	uint type;
 	uint width;
 	uint height;
 	iPoint screen_pos;

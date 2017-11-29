@@ -97,6 +97,7 @@
     <ClCompile Include="j1Window.cpp" />
     <ClCompile Include="PugiXml\src\pugixml.cpp" />
     <ClCompile Include="UI.cpp" />
+    <ClCompile Include="UiButton.cpp" />
     <ClCompile Include="UiImage.cpp" />
     <ClCompile Include="UiLabel.cpp" />
   </ItemGroup>
@@ -124,6 +125,7 @@
     <ClInclude Include="PugiXml\src\pugiconfig.hpp" />
     <ClInclude Include="PugiXml\src\pugixml.hpp" />
     <ClInclude Include="Ui.h" />
+    <ClInclude Include="UiButton.h" />
     <ClInclude Include="UiImage.h" />
     <ClInclude Include="UiLabel.h" />
   </ItemGroup>

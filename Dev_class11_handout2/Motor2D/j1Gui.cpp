@@ -80,7 +80,7 @@ const SDL_Texture* j1Gui::GetAtlas() const
 
 UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect, const SDL_Texture* texture)
 {
-	UiImage* newImage = new UiImage(position.x,position.y, rect,texture);
+	UiImage* newImage = new UiImage(position.x,position.y, rect,texture,UI_IMAGE);
 	UiElement.add((UI*)newImage);
 	return newImage;
 }
@@ -90,10 +90,24 @@ UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font
 	const SDL_Texture* tex = App->font->Print(text,color,font);
 
 	
-	UiLabel* newLabel = new UiLabel(x,y,tex);
+	UiLabel* newLabel = new UiLabel(x,y,tex,UI_LABEL);
 	UiElement.add((UI*)newLabel);
 	
 	return newLabel;
+}
+
+UiButton* j1Gui::CreateButton(iPoint position, p2List<SDL_Rect> rect, const SDL_Texture* texture)
+{
+	/*
+	Rect UI list:
+	0=Button default
+	1=Mouse on Button
+	2=Button clicked
+	*/
+
+	UiButton* newButton = new UiButton(position.x, position.y, rect, texture, UI_BUTTON);
+	UiElement.add((UI*)newButton);
+	return newButton;
 }
 
 // class Gui ---------------------------------------------------

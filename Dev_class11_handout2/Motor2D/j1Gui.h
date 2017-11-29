@@ -6,8 +6,15 @@
 #include "p2List.h"
 #include "UiLabel.h"
 #include "UiImage.h"
+#include "UiButton.h"
 #define CURSOR_WIDTH 2
 
+
+enum Ui_type {
+	UI_IMAGE=0,
+	UI_BUTTON,
+	UI_LABEL
+};
 // TODO 1: Create your structure of classes
 
 // ---------------------------------------------------
@@ -39,7 +46,8 @@ public:
 	// Gui creation functions
 	bool Update(float);
 	UiImage* CreateImage(iPoint,SDL_Rect, const SDL_Texture*);
-	UiLabel* CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font);
+	UiLabel* CreateLabel(int, int, char*, SDL_Color, _TTF_Font*);
+	UiButton* CreateButton(iPoint, p2List<SDL_Rect>, const SDL_Texture*);
 	const SDL_Texture* GetAtlas() const;
 
 private:

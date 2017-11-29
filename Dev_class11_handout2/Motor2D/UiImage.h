@@ -11,7 +11,7 @@ class UiImage : public UI
 {
 public:
 
-	UiImage(int,int,SDL_Rect, const SDL_Texture*);
+	UiImage(int,int,SDL_Rect, const SDL_Texture*,uint);
 
 };
 

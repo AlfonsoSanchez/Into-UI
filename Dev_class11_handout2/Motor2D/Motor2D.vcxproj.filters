@@ -50,13 +50,16 @@
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
     <ClCompile Include="UiImage.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
     <ClCompile Include="UiLabel.cpp">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UiButton.cpp">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,14 +129,17 @@
     <ClInclude Include="j1Gui.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Ui.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="UiLabel.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="UiImage.h">
-      <Filter>Desenvolupament  ========\Modules</Filter>
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Ui.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UiButton.h">
+      <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,9 @@
     </Filter>
     <Filter Include="Desenvolupament  ========\Tools\PuguiXML">
       <UniqueIdentifier>{7cb78d67-17cc-45eb-af97-e2106becce7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Desenvolupament  ========\Modules\GUI">
+      <UniqueIdentifier>{80322059-6694-4076-bdbb-4915f67188fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

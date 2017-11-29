@@ -3,14 +3,14 @@
 #include "j1App.h"
 #include "j1Gui.h"
 
-UI::UI(int x, int y, const SDL_Texture* texture)
+UI::UI(int x, int y, const SDL_Texture* texture, uint type)
 {
 
 	screen_pos.x = x;
 	screen_pos.y = y;
 	this->texture = texture;
-	App->tex->GetSize(texture, width, height);
-	rectUi = {0,0,(int)width,(int)height};
+	this->type = type;
+
 }
 
 void UI::Draw(float dt)

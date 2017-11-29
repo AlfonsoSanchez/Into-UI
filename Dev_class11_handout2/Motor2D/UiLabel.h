@@ -11,10 +11,11 @@ class UiLabel : public UI
 {
 public:
 
-	UiLabel(int x, int y, const SDL_Texture *texture);
+	UiLabel(int, int, const SDL_Texture *, uint);
 
 
 public:
+	
 	
 };
 
