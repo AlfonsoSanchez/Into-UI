@@ -51,8 +51,32 @@ bool j1Gui::Update(float dt)
 		Ui_item->data->Draw(dt);
 		Ui_item = Ui_item->next;
 	}
+	
+	
+	iPoint mouse;
+	App->input->GetMousePosition(mouse.x, mouse.y);
+	Ui_item = UiElement.start;
 
+	while (Ui_item != nullptr)
+	{
+		if (Ui_item->data->type == UI_BUTTON) {
+			if (mouse.x < Ui_item->data->screen_pos.x + Ui_item->data->rectUi.w && mouse.x > Ui_item->data->screen_pos.x && mouse.y < Ui_item->data->screen_pos.y + Ui_item->data->rectUi.h && mouse.y > Ui_item->data->screen_pos.y) {
+				Ui_item->data->mouse_on = true;
+			}
+			else {
+				Ui_item->data->mouse_on = false;
+			}
 
+			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT)) {
+				Ui_item->data->mouse_click = true;
+			}
+
+			else {
+				Ui_item->data->mouse_click = false;
+			}
+		}
+		Ui_item = Ui_item->next;
+	}
 	return true;
 
 }
@@ -96,7 +120,7 @@ UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font
 	return newLabel;
 }
 
-UiButton* j1Gui::CreateButton(iPoint position, p2List<SDL_Rect> rect, const SDL_Texture* texture)
+UiButton* j1Gui::CreateButton(iPoint position, SDL_Rect default, SDL_Rect mouse_on, SDL_Rect clicked, const SDL_Texture* texture)
 {
 	/*
 	Rect UI list:
@@ -105,7 +129,7 @@ UiButton* j1Gui::CreateButton(iPoint position, p2List<SDL_Rect> rect, const SDL_
 	2=Button clicked
 	*/
 
-	UiButton* newButton = new UiButton(position.x, position.y, rect, texture, UI_BUTTON);
+	UiButton* newButton = new UiButton(position.x, position.y, default, mouse_on, clicked, texture, UI_BUTTON);
 	UiElement.add((UI*)newButton);
 	return newButton;
 }

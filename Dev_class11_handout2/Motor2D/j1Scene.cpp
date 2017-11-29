@@ -107,6 +107,8 @@ bool j1Scene::Start()
 	App->gui->CreateLabel(350, 750, "Copyright 2004-2007 Blizzard Entertainment. All Rights Reserved", { 226,186,31,255 }, font);
 	//WoWps.org TBC
 	App->gui->CreateLabel(888, 613, "WoWps.org TBC", { 102, 102, 102,255 }, font);
+
+	App->gui->CreateButton({ 200,0 },{0, 113, 229, 69},{411, 169, 229, 69},{642, 169, 229, 69},App->gui->GetAtlas());
 	return true;
 }
 
@@ -193,7 +195,8 @@ bool j1Scene::Update(float dt)
 		iPoint pos = App->map->MapToWorld(path->At(i)->x, path->At(i)->y);
 		App->render->Blit(debug_tex, pos.x, pos.y);
 	}
-
+	//colision buttons
+	
 	return true;
 }
 

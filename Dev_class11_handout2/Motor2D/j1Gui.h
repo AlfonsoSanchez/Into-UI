@@ -47,7 +47,7 @@ public:
 	bool Update(float);
 	UiImage* CreateImage(iPoint,SDL_Rect, const SDL_Texture*);
 	UiLabel* CreateLabel(int, int, char*, SDL_Color, _TTF_Font*);
-	UiButton* CreateButton(iPoint, p2List<SDL_Rect>, const SDL_Texture*);
+	UiButton* CreateButton(iPoint, SDL_Rect, SDL_Rect, SDL_Rect, const SDL_Texture*);
 	const SDL_Texture* GetAtlas() const;
 
 private:

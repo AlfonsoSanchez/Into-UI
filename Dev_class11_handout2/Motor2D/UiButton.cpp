@@ -10,11 +10,11 @@ Rect UI list:
 1=Mouse on Button
 2=Button clicked
 */
-UiButton::UiButton(int x, int y, p2List<SDL_Rect> rect , const SDL_Texture* texture, uint type) : UI(x, y, texture, type)
+UiButton::UiButton(int x, int y, SDL_Rect default, SDL_Rect mouse_on, SDL_Rect clicked, const SDL_Texture* texture, uint type) : UI(x, y, texture, type)
 {
-	default_texture_rect=rect[0];
-	mouse_on_rect = rect[1];
-	clicked_rect = rect[2];
+	default_texture_rect=default;
+	mouse_on_rect = mouse_on;
+	clicked_rect = clicked;
 }
 
 void UiButton::Draw(float dt) {

@@ -22,6 +22,8 @@ public:
 	uint height;
 	iPoint screen_pos;
 	SDL_Rect rectUi;
+	bool mouse_on = false;
+	bool mouse_click = false;
 	const SDL_Texture *texture= nullptr;
 };
 
