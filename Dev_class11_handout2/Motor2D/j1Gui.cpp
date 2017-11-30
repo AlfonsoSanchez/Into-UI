@@ -51,15 +51,41 @@ bool j1Gui::Update(float dt)
 		Ui_item->data->Draw(dt);
 		Ui_item = Ui_item->next;
 	}
-	
-	
+
+
+	if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN) {
+		bool button_found = false;
+		while (button_found == false) {
+			if (tabbed_button == 0) {
+				UiElement[UiElement.count() - 1]->mouse_on = false;
+			}
+			if (UiElement[tabbed_button]->type == UI_BUTTON) {
+				button_found = true;
+
+					if (UiElement.count() >= tabbed_button + 1) {
+						UiElement[tabbed_button]->mouse_on = true;
+						UiElement[tabbed_button - 1]->mouse_on = false;
+						tabbed_button += 1;
+					}
+					if (UiElement.count() == tabbed_button) {
+						tabbed_button = 0;
+					}
+				}
+			else {
+				tabbed_button += 1;
+			}
+		}
+	}
+
+
 	iPoint mouse;
 	App->input->GetMousePosition(mouse.x, mouse.y);
-	Ui_item = UiElement.start;
+	//Ui_item = UiElement.start;
 
-	while (Ui_item != nullptr)
+	/*while (Ui_item != nullptr)
 	{
 		if (Ui_item->data->type == UI_BUTTON) {
+
 			if (mouse.x < Ui_item->data->screen_pos.x + Ui_item->data->rectUi.w && mouse.x > Ui_item->data->screen_pos.x && mouse.y < Ui_item->data->screen_pos.y + Ui_item->data->rectUi.h && mouse.y > Ui_item->data->screen_pos.y) {
 				Ui_item->data->mouse_on = true;
 			}
@@ -76,7 +102,7 @@ bool j1Gui::Update(float dt)
 			}
 		}
 		Ui_item = Ui_item->next;
-	}
+	}*/
 	return true;
 
 }

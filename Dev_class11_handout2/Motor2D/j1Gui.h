@@ -55,6 +55,7 @@ private:
 	SDL_Texture* atlas;
 	p2SString atlas_file_name;
 	p2List<UI*> UiElement;
+	int tabbed_button=0;
 };
 
 #endif // __j1GUI_H__

@@ -109,6 +109,8 @@ bool j1Scene::Start()
 	App->gui->CreateLabel(888, 613, "WoWps.org TBC", { 102, 102, 102,255 }, font);
 
 	App->gui->CreateButton({ 200,0 },{0, 113, 229, 69},{411, 169, 229, 69},{642, 169, 229, 69},App->gui->GetAtlas());
+	App->gui->CreateButton({ 200,200 }, { 0, 113, 229, 69 }, { 411, 169, 229, 69 }, { 642, 169, 229, 69 }, App->gui->GetAtlas());
+	App->gui->CreateButton({ 200,400 }, { 0, 113, 229, 69 }, { 411, 169, 229, 69 }, { 642, 169, 229, 69 }, App->gui->GetAtlas());
 	return true;
 }
 
