@@ -60,8 +60,9 @@ bool j1Gui::Update(float dt)
 				UiElement[UiElement.count() - 1]->mouse_on = false;
 			}
 			if (UiElement[tabbed_button]->type == UI_BUTTON) {
-				button_found = true;
 
+				button_found = true;
+				tabb = true;
 					if (UiElement.count() >= tabbed_button + 1) {
 						UiElement[tabbed_button]->mouse_on = true;
 						UiElement[tabbed_button - 1]->mouse_on = false;
@@ -76,33 +77,41 @@ bool j1Gui::Update(float dt)
 			}
 		}
 	}
-
-
-	iPoint mouse;
-	App->input->GetMousePosition(mouse.x, mouse.y);
-	//Ui_item = UiElement.start;
-
-	/*while (Ui_item != nullptr)
+	else 
 	{
-		if (Ui_item->data->type == UI_BUTTON) {
+		iPoint mouse;
+		App->input->GetMousePosition(mouse.x, mouse.y);
+		Ui_item = UiElement.start;
+		bool button_found = false;
+		while (Ui_item != nullptr)
+		{
+			if (Ui_item->data->type == UI_BUTTON) {
 
-			if (mouse.x < Ui_item->data->screen_pos.x + Ui_item->data->rectUi.w && mouse.x > Ui_item->data->screen_pos.x && mouse.y < Ui_item->data->screen_pos.y + Ui_item->data->rectUi.h && mouse.y > Ui_item->data->screen_pos.y) {
-				Ui_item->data->mouse_on = true;
-			}
-			else {
-				Ui_item->data->mouse_on = false;
-			}
+				if (mouse.x < Ui_item->data->screen_pos.x + Ui_item->data->rectUi.w && mouse.x > Ui_item->data->screen_pos.x && mouse.y < Ui_item->data->screen_pos.y + Ui_item->data->rectUi.h && mouse.y > Ui_item->data->screen_pos.y) {
+					if (!Ui_item->data->mouse_on)
+					{
+						Ui_item->data->mouse_on = true;
+						Ui_item = UiElement.start;
+						button_found = true;
+					}
+				}
+				else {
+					if(Ui_item->data->mouse_on  && button_found )
+					Ui_item->data->mouse_on = false;
+					
+				}
 
-			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT)) {
-				Ui_item->data->mouse_click = true;
-			}
+				if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT)) {
+					Ui_item->data->mouse_click = true;
+				}
 
-			else {
-				Ui_item->data->mouse_click = false;
+				else {
+					Ui_item->data->mouse_click = false;
+				}
 			}
+			Ui_item = Ui_item->next;
 		}
-		Ui_item = Ui_item->next;
-	}*/
+	}
 	return true;
 
 }

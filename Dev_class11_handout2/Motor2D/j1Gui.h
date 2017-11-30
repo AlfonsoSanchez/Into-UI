@@ -56,6 +56,7 @@ private:
 	p2SString atlas_file_name;
 	p2List<UI*> UiElement;
 	int tabbed_button=0;
+	bool tabb = false;
 };
 
 #endif // __j1GUI_H__
