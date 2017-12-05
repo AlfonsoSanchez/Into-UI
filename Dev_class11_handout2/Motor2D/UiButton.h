@@ -12,7 +12,7 @@ class UiButton : public UI
 public:
 
 	UiButton(int, int, SDL_Rect, SDL_Rect, SDL_Rect, const SDL_Texture*, uint);
-	void Draw(float);
+	void Draw();
 
 private:
 	SDL_Rect default_texture_rect;

@@ -17,16 +17,16 @@ UiButton::UiButton(int x, int y, SDL_Rect default, SDL_Rect mouse_on, SDL_Rect c
 	clicked_rect = clicked;
 }
 
-void UiButton::Draw(float dt) {
+void UiButton::Draw() {
 	
-	if (mouse_on) {
-		if (mouse_click){
-			rectUi = clicked_rect;
-		}
-		else {
-			rectUi = mouse_on_rect;
-		}
+	if (state==MOUSE_ON) {		
+		rectUi = mouse_on_rect;
 	}
+
+	else if (state == CLICKED) {
+		rectUi = clicked_rect;
+	}
+
 	else {
 		rectUi = default_texture_rect;
 	}
