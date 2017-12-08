@@ -2,19 +2,12 @@
 #define __j1GUI_H__
 
 #include "j1Module.h"
-#include "Ui.h"
-#include "p2List.h"
-#include "UiLabel.h"
-#include "UiImage.h"
-#include "UiButton.h"
+#include "UILabel.h"
+#include "UImage.h"
+#include "UIButton.h"
+#include "j1Fonts.h"
 #define CURSOR_WIDTH 2
 
-
-enum Ui_type {
-	UI_IMAGE=0,
-	UI_BUTTON,
-	UI_LABEL
-};
 // TODO 1: Create your structure of classes
 
 // ---------------------------------------------------
@@ -42,21 +35,22 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	bool Update(float);
 	// TODO 2: Create the factory methods
 	// Gui creation functions
-	bool Update(float);
-	UiImage* CreateImage(iPoint,SDL_Rect, const SDL_Texture*);
-	UiLabel* CreateLabel(int, int, char*, SDL_Color, _TTF_Font*);
-	UiButton* CreateButton(iPoint, SDL_Rect, SDL_Rect, SDL_Rect, const SDL_Texture*);
+	UIImage* CreateImage(iPoint, SDL_Rect, const SDL_Texture*,j1Module*,bool);
+	UILabel* CreateLabel(iPoint, char*, SDL_Color, _TTF_Font* ,j1Module*,bool);
+	UIButton* CreateButton(iPoint, SDL_Rect, SDL_Rect, SDL_Rect, const SDL_Texture*, j1Module*,bool);
+	void SortByDrawOrder();
 	const SDL_Texture* GetAtlas() const;
 
 private:
 
-	SDL_Texture* atlas;
+	SDL_Texture* atlas = nullptr;
 	p2SString atlas_file_name;
-	p2List<UI*> UiElement;
-	int tabbed_button=0;
-	bool tabb = false;
+	p2List<UIElement*> UiElement;
+	bool drawDebug = false;
+	bool needOrderList = false;
 };
 
 #endif // __j1GUI_H__

@@ -328,5 +328,7 @@ public:
 			p_other_list = p_other_list->next;
 		}
 	}
+	
+
 };
 #endif /*__p2List_H__*/

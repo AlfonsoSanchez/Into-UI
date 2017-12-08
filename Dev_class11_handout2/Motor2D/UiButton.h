@@ -1,25 +1,19 @@
 #ifndef _UIBUTTON_
 #define _UIBUTTON_
 
+#include "UiElement.h"
 
-#include "Ui.h"
-#include "SDL/include/SDL.h"
-#include "p2Defs.h"
-#include "p2Point.h"
-
-class UiButton : public UI
+class UIButton : public UIElement
 {
 public:
 
-	UiButton(int, int, SDL_Rect, SDL_Rect, SDL_Rect, const SDL_Texture*, uint);
-	void Draw(float);
+	UIButton(iPoint, SDL_Rect, SDL_Rect, SDL_Rect, const SDL_Texture*, ElementType,j1Module*,bool);
 
-private:
-	SDL_Rect default_texture_rect;
-	SDL_Rect mouse_on_rect;
-	SDL_Rect clicked_rect;
-
+	SDL_Rect default_texture_rect = { 0,0,0,0 };
+	SDL_Rect mouse_on_rect = { 0,0,0,0 };
+	SDL_Rect clicked_rect = { 0,0,0,0 };
 };
 
 
 #endif
+

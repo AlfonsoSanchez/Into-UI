@@ -32,7 +32,6 @@ bool j1Gui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.GetString());
 
-
 	return true;
 }
 
@@ -41,77 +40,35 @@ bool j1Gui::PreUpdate()
 {
 	return true;
 }
+
 bool j1Gui::Update(float dt)
 {
+	if (needOrderList == true)
+	{
+		//Order List to draw;
+		SortByDrawOrder();
+		needOrderList = false;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+		drawDebug = !drawDebug;
 
-	p2List_item<UI*> *Ui_item = UiElement.start;
+	p2List_item<UIElement*> *Ui_item = UiElement.start;
 
 	while (Ui_item != nullptr)
 	{
-		Ui_item->data->Draw(dt);
+		Ui_item->data->Update(dt);
 		Ui_item = Ui_item->next;
 	}
 
-
-	if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN) {
-		bool button_found = false;
-		while (button_found == false) {
-			if (tabbed_button == 0) {
-				UiElement[UiElement.count() - 1]->mouse_on = false;
-			}
-			if (UiElement[tabbed_button]->type == UI_BUTTON) {
-
-				button_found = true;
-				tabb = true;
-					if (UiElement.count() >= tabbed_button + 1) {
-						UiElement[tabbed_button]->mouse_on = true;
-						UiElement[tabbed_button - 1]->mouse_on = false;
-						tabbed_button += 1;
-					}
-					if (UiElement.count() == tabbed_button) {
-						tabbed_button = 0;
-					}
-				}
-			else {
-				tabbed_button += 1;
-			}
-		}
-	}
-	else 
+	Ui_item = UiElement.start;
+	while (Ui_item != nullptr)
 	{
-		iPoint mouse;
-		App->input->GetMousePosition(mouse.x, mouse.y);
-		Ui_item = UiElement.start;
-		bool button_found = false;
-		while (Ui_item != nullptr)
-		{
-			if (Ui_item->data->type == UI_BUTTON) {
-
-				if (mouse.x < Ui_item->data->screen_pos.x + Ui_item->data->rectUi.w && mouse.x > Ui_item->data->screen_pos.x && mouse.y < Ui_item->data->screen_pos.y + Ui_item->data->rectUi.h && mouse.y > Ui_item->data->screen_pos.y) {
-					if (!Ui_item->data->mouse_on)
-					{
-						Ui_item->data->mouse_on = true;
-						Ui_item = UiElement.start;
-						button_found = true;
-					}
-				}
-				else {
-					if(Ui_item->data->mouse_on  && button_found )
-					Ui_item->data->mouse_on = false;
-					
-				}
-
-				if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT)) {
-					Ui_item->data->mouse_click = true;
-				}
-
-				else {
-					Ui_item->data->mouse_click = false;
-				}
-			}
-			Ui_item = Ui_item->next;
-		}
+		Ui_item->data->Draw();
+		if (drawDebug == true)
+			Ui_item->data->DebugDraw();
+		Ui_item = Ui_item->next;
 	}
+
 	return true;
 
 }
@@ -125,8 +82,6 @@ bool j1Gui::PostUpdate()
 bool j1Gui::CleanUp()
 {
 	LOG("Freeing GUI");
-	
-	UiElement.clear();
 
 	return true;
 }
@@ -137,36 +92,51 @@ const SDL_Texture* j1Gui::GetAtlas() const
 	return atlas;
 }
 
-UiImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect, const SDL_Texture* texture)
+// class Gui ---------------------------------------------------
+UIImage* j1Gui::CreateImage(iPoint position, SDL_Rect rect, const SDL_Texture* texture, j1Module* listener,bool dragable )
 {
-	UiImage* newImage = new UiImage(position.x,position.y, rect,texture,UI_IMAGE);
-	UiElement.add((UI*)newImage);
+	UIImage* newImage = new UIImage(position, rect, texture, ElementType::ImageElement, listener,dragable);
+	UiElement.add((UIElement*)newImage);
+	needOrderList = true;
 	return newImage;
 }
 
-UiLabel* j1Gui::CreateLabel(int x, int y, char* text, SDL_Color color, _TTF_Font* font)
+UILabel* j1Gui::CreateLabel(iPoint position, char* text, SDL_Color color, _TTF_Font* font, j1Module* listener,bool dragable)
 {
-	const SDL_Texture* tex = App->font->Print(text,color,font);
+	const SDL_Texture* tex = App->font->Print(text, color, font);
 
-	
-	UiLabel* newLabel = new UiLabel(x,y,tex,UI_LABEL);
-	UiElement.add((UI*)newLabel);
-	
+	UILabel* newLabel = new UILabel(position, tex, ElementType::LabelElement,listener,dragable);
+	App->tex->GetSize(tex, (uint&)newLabel->rectUi.w, (uint&)newLabel->rectUi.h);
+	UiElement.add((UIElement*)newLabel);
+	needOrderList = true;
 	return newLabel;
 }
 
-UiButton* j1Gui::CreateButton(iPoint position, SDL_Rect default, SDL_Rect mouse_on, SDL_Rect clicked, const SDL_Texture* texture)
+UIButton* j1Gui::CreateButton(iPoint position, SDL_Rect default_rect, SDL_Rect mouse_on, SDL_Rect clicked, const SDL_Texture* texture, j1Module* listener, bool dragable)
 {
-	/*
-	Rect UI list:
-	0=Button default
-	1=Mouse on Button
-	2=Button clicked
-	*/
-
-	UiButton* newButton = new UiButton(position.x, position.y, default, mouse_on, clicked, texture, UI_BUTTON);
-	UiElement.add((UI*)newButton);
+	UIButton* newButton = new UIButton(position, default_rect, mouse_on, clicked, texture, ElementType::ButtonElement, listener,dragable);
+	UiElement.add((UIElement*)newButton);
+	needOrderList = true;
 	return newButton;
 }
 
-// class Gui ---------------------------------------------------
+void j1Gui::SortByDrawOrder()
+{
+	bool swap = true;
+
+	while (swap)
+	{
+		swap = false;
+		p2List_item<UIElement*> *item = UiElement.start;
+
+		while (item != nullptr && item->next != nullptr)
+		{
+			if (item->data->positionToDraw > item->next->data->positionToDraw)
+			{
+				SWAP(item->data, item->next->data);
+				swap = true;
+			}
+			item = item->next;
+		}
+	}
+}

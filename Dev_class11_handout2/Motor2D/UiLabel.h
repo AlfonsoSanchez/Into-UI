@@ -1,22 +1,12 @@
 #ifndef _UILABEL_
 #define _UILABEL_
 
-#include "SDL/include/SDL.h"
-#include "p2Defs.h"
-#include "p2Point.h"
-#include "j1Fonts.h"
-#include "Ui.h"
+#include "UIElement.h"
 
-class UiLabel : public UI
+class UILabel : public UIElement
 {
 public:
-
-	UiLabel(int, int, const SDL_Texture *, uint);
-
-
-public:
-	
-	
+	UILabel(iPoint, const SDL_Texture *, ElementType ,j1Module*,bool);
 };
 
 #endif

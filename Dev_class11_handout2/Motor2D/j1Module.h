@@ -10,6 +10,8 @@
 #include "PugiXml\src\pugixml.hpp"
 
 class j1App;
+class UIElement;
+enum EventElement;
 
 class j1Module
 {
@@ -71,7 +73,7 @@ public:
 	{
 		return true;
 	}
-
+	virtual void onUiTriggered(UIElement*,EventElement){}
 public:
 
 	p2SString	name;

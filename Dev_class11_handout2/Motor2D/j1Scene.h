@@ -4,8 +4,12 @@
 #include "j1Module.h"
 
 struct SDL_Texture;
-class GuiImage;
+class UIImage;
 class GuiText;
+class UIElement;
+class UIButton;
+enum EventElement;
+enum ElementType;
 
 class j1Scene : public j1Module
 {
@@ -34,10 +38,13 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void onUiTriggered(UIElement*, EventElement);
+
 private:
-	SDL_Texture* debug_tex;
-	GuiImage* banner;
-	GuiText* text;
+	SDL_Texture* debug_tex = nullptr;
+	UIImage* banner = nullptr;
+	GuiText* text = nullptr;
+	p2List<UIButton*> buttons;
 };
 
 #endif // __j1SCENE_H__

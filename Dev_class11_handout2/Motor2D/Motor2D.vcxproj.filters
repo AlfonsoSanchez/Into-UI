@@ -49,16 +49,16 @@
     <ClCompile Include="j1Gui.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="UiImage.cpp">
+    <ClCompile Include="UiElement.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="UiLabel.cpp">
+    <ClCompile Include="UImage.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="UI.cpp">
+    <ClCompile Include="UILabel.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="UiButton.cpp">
+    <ClCompile Include="UIButton.cpp">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,16 +129,16 @@
     <ClInclude Include="j1Gui.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="UiLabel.h">
+    <ClInclude Include="UIElement.h">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="UiImage.h">
+    <ClInclude Include="UImage.h">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Ui.h">
+    <ClInclude Include="UILabel.h">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="UiButton.h">
+    <ClInclude Include="UIButton.h">
       <Filter>Desenvolupament  ========\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -162,7 +162,7 @@
       <UniqueIdentifier>{7cb78d67-17cc-45eb-af97-e2106becce7b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Desenvolupament  ========\Modules\GUI">
-      <UniqueIdentifier>{80322059-6694-4076-bdbb-4915f67188fe}</UniqueIdentifier>
+      <UniqueIdentifier>{67b6bf91-3547-4f36-aa1f-60f563466f2a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
