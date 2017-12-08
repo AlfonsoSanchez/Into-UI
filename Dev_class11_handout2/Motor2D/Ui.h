@@ -6,24 +6,26 @@
 #include "p2Point.h"
 #include "j1Textures.h"
 
+enum UI_COLLISION {
+	NO_COLLISION = 0,
+	MOUSE_ON,
+	CLICKED
+};
+
 class UI
 {
 public:
 	UI(int,int, const SDL_Texture*,uint);
 	virtual void Update(float) { };
-	virtual void Draw(float);
+	virtual void Draw();
 	virtual ~UI(){ };
-
-
-
+	uint state;
 public:
 	uint type;
 	uint width;
 	uint height;
 	iPoint screen_pos;
 	SDL_Rect rectUi;
-	bool mouse_on = false;
-	bool mouse_click = false;
 	const SDL_Texture *texture= nullptr;
 };
 

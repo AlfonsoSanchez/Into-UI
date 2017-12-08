@@ -13,7 +13,7 @@ UI::UI(int x, int y, const SDL_Texture* texture, uint type)
 
 }
 
-void UI::Draw(float dt)
+void UI::Draw()
 {
 	App->render->Blit(texture, screen_pos.x, screen_pos.y, &rectUi);
 }

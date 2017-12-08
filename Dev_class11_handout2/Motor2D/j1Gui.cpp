@@ -56,6 +56,7 @@ bool j1Gui::Update(float dt)
 
 	while (Ui_item != nullptr)
 	{
+
 		Ui_item->data->Update(dt);
 		Ui_item = Ui_item->next;
 	}
@@ -68,6 +69,10 @@ bool j1Gui::Update(float dt)
 			Ui_item->data->DebugDraw();
 		Ui_item = Ui_item->next;
 	}
+
+
+	
+	
 
 	return true;
 

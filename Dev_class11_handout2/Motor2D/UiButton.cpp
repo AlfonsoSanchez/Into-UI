@@ -8,4 +8,5 @@ UIButton::UIButton(iPoint position, SDL_Rect rect_default, SDL_Rect rect_hover, 
 	this->clicked_rect = rec_click;
 	this->texture = texture;
 	this->type = type;
+
 }
